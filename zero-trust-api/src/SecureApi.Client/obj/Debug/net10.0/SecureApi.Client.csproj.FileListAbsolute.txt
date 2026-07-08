@@ -1543,12 +1543,6 @@
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/icudt_EFIGS.tptq2av103.dat.gz
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/icudt_no_CJK.lfu7j35m59.dat.gz
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/Microsoft.DotNet.HotReload.WebAssembly.Browser.3o7yr60r40.wasm.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.uio0gu8m75.wasm
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.vp9axdtz2e.pdb
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/dotnet.n21uwti8zz.js
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.uio0gu8m75.wasm.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.vp9axdtz2e.pdb.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/dotnet.n21uwti8zz.js.gz
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/SecureApi.Client.staticwebassets.runtime.json
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/SecureApi.Client.staticwebassets.endpoints.json
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/SecureApi.Client.dll
@@ -2240,10 +2234,6 @@
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/lackzs1xpg-{0}-tptq2av103-tptq2av103.gz
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/35bysyun65-{0}-lfu7j35m59-lfu7j35m59.gz
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/xq792whnv3-{0}-3o7yr60r40-3o7yr60r40.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/7s961iyt2m-{0}-uio0gu8m75-uio0gu8m75.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/r8yrnqsbdr-{0}-vp9axdtz2e-vp9axdtz2e.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/teaym1qfto-{0}-n21uwti8zz-n21uwti8zz.gz
-/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/ki3yf6z0m4-{0}-d86kfi3a93-d86kfi3a93.gz
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/staticwebassets.build.json
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/staticwebassets.build.json.cache
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/staticwebassets.development.json
@@ -2254,3 +2244,13 @@
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/refint/SecureApi.Client.dll
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/SecureApi.Client.pdb
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/ref/SecureApi.Client.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.6jt17j2w3a.wasm
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.moecoz981o.pdb
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/dotnet.164r0a3wa2.js
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.6jt17j2w3a.wasm.gz
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/SecureApi.Client.moecoz981o.pdb.gz
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/bin/Debug/net10.0/wwwroot/_framework/dotnet.164r0a3wa2.js.gz
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/7s961iyt2m-{0}-6jt17j2w3a-6jt17j2w3a.gz
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/r8yrnqsbdr-{0}-moecoz981o-moecoz981o.gz
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/teaym1qfto-{0}-164r0a3wa2-164r0a3wa2.gz
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Client/obj/Debug/net10.0/compressed/ki3yf6z0m4-{0}-mwhbyehm98-mwhbyehm98.gz
