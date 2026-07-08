@@ -1,0 +1,23 @@
+<Solution>
+  <Folder Name="/attacks/">
+    <Project Path="attacks/AttackConsole/AttackConsole.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/SecureApi.Client/SecureApi.Client.csproj" />
+    <Project Path="src/SecureApi.Shared/SecureApi.Shared.csproj" />
+  </Folder>
+  <Folder Name="/src/AuthServer/">
+    <Project Path="src/AuthServer/AuthServer.Api/AuthServer.Api.csproj" />
+    <Project Path="src/AuthServer/AuthServer.Core/AuthServer.Core.csproj" />
+  </Folder>
+  <Folder Name="/src/ResourceApi/">
+    <Project Path="src/ResourceApi/ResourceApi.Api/ResourceApi.Api.csproj" />
+    <Project Path="src/ResourceApi/ResourceApi.Application/ResourceApi.Application.csproj" />
+    <Project Path="src/ResourceApi/ResourceApi.Domain/ResourceApi.Domain.csproj" />
+    <Project Path="src/ResourceApi/ResourceApi.Infrastructure/ResourceApi.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SecureApi.IntegrationTests/SecureApi.IntegrationTests.csproj" />
+    <Project Path="tests/SecureApi.UnitTests/SecureApi.UnitTests.csproj" />
+  </Folder>
+</Solution>
