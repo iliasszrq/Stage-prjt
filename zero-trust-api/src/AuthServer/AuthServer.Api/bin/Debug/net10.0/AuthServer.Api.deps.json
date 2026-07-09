@@ -14,6 +14,7 @@
           "Microsoft.IdentityModel.Tokens": "8.19.1",
           "Microsoft.OpenApi": "2.7.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.2",
+          "SecureApi.Shared": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "8.19.1"
         },
         "runtime": {
@@ -153,8 +154,20 @@
         }
       },
       "AuthServer.Core/1.0.0": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "8.19.1",
+          "System.IdentityModel.Tokens.Jwt": "8.19.1"
+        },
         "runtime": {
           "AuthServer.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SecureApi.Shared/1.0.0": {
+        "runtime": {
+          "SecureApi.Shared.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -260,6 +273,11 @@
       "hashPath": "system.identitymodel.tokens.jwt.8.19.1.nupkg.sha512"
     },
     "AuthServer.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SecureApi.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

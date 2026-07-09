@@ -218,11 +218,25 @@
       "AuthServer.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Microsoft.IdentityModel.Tokens": "8.19.1",
+          "System.IdentityModel.Tokens.Jwt": "8.19.1"
+        },
         "compile": {
           "bin/placeholder/AuthServer.Core.dll": {}
         },
         "runtime": {
           "bin/placeholder/AuthServer.Core.dll": {}
+        }
+      },
+      "SecureApi.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/SecureApi.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SecureApi.Shared.dll": {}
         }
       }
     }
@@ -523,6 +537,11 @@
       "type": "project",
       "path": "../AuthServer.Core/AuthServer.Core.csproj",
       "msbuildProject": "../AuthServer.Core/AuthServer.Core.csproj"
+    },
+    "SecureApi.Shared/1.0.0": {
+      "type": "project",
+      "path": "../../SecureApi.Shared/SecureApi.Shared.csproj",
+      "msbuildProject": "../../SecureApi.Shared/SecureApi.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -533,6 +552,7 @@
       "Microsoft.IdentityModel.Tokens >= 8.19.1",
       "Microsoft.OpenApi >= 2.7.5",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 10.0.2",
+      "SecureApi.Shared >= 1.0.0",
       "System.IdentityModel.Tokens.Jwt >= 8.19.1"
     ]
   },
@@ -564,6 +584,9 @@
           "projectReferences": {
             "/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Core/AuthServer.Core.csproj": {
               "projectPath": "/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Core/AuthServer.Core.csproj"
+            },
+            "/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Shared/SecureApi.Shared.csproj": {
+              "projectPath": "/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/SecureApi.Shared/SecureApi.Shared.csproj"
             }
           }
         }

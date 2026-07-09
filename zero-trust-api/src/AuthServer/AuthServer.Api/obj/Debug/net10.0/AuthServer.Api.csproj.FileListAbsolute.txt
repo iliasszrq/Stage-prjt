@@ -92,3 +92,5 @@
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Api/obj/Debug/net10.0/AuthServer.Api.pdb
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Api/obj/Debug/net10.0/AuthServer.Api.genruntimeconfig.cache
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Api/obj/Debug/net10.0/ref/AuthServer.Api.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Api/bin/Debug/net10.0/SecureApi.Shared.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Api/bin/Debug/net10.0/SecureApi.Shared.pdb

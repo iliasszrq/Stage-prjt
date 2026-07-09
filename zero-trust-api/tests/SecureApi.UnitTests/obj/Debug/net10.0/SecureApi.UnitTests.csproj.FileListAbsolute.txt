@@ -206,3 +206,11 @@
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/obj/Debug/net10.0/SecureApi.UnitTests.pdb
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/obj/Debug/net10.0/SecureApi.UnitTests.genruntimeconfig.cache
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/obj/Debug/net10.0/ref/SecureApi.UnitTests.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.Bcl.Cryptography.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.IdentityModel.Abstractions.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.IdentityModel.Logging.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/tests/SecureApi.UnitTests/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll

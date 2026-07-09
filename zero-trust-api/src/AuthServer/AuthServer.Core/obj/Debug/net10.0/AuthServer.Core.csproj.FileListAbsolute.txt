@@ -22,3 +22,4 @@
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Core/obj/Debug/net10.0/refint/AuthServer.Core.dll
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Core/obj/Debug/net10.0/AuthServer.Core.pdb
 /Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Core/obj/Debug/net10.0/ref/AuthServer.Core.dll
+/Users/iliasszarquan/Desktop/Stage-prjt/zero-trust-api/src/AuthServer/AuthServer.Core/obj/Debug/net10.0/AuthServer.Core.csproj.AssemblyReference.cache

@@ -1,8 +1,18 @@
+using AuthServer.Core.Tokens;
+using SecureApi.Shared.Auth;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+// Bind the "Jwt" config section to a JwtSettings instance.
+var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()!;
+builder.Services.AddSingleton(jwtSettings);
+
+// Register the token generator so the endpoint can use it.
+builder.Services.AddSingleton<AccessTokenGenerator>();
 
 var app = builder.Build();
 
@@ -14,28 +24,21 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+// POST /token — exchange username/password for a signed JWT.
+app.MapPost("/token", (TokenRequest request, AccessTokenGenerator generator, JwtSettings settings) =>
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    // Week 1: credentials are hardcoded. Real user store comes in Week 2.
+    if (request.Username != "iliass" || request.Password != "password123")
+    {
+        return Results.Unauthorized();
+    }
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    var token = generator.GenerateToken(userId: "user-123", username: request.Username);
+
+    return Results.Ok(new TokenResponse(
+        AccessToken: token,
+        ExpiresIn: settings.AccessTokenMinutes * 60)); // minutes → seconds
 })
-.WithName("GetWeatherForecast");
+.WithName("IssueToken");
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
