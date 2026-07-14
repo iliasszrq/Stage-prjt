@@ -1,5 +1,8 @@
 using AuthServer.Core.Tokens;
 using SecureApi.Shared.Auth;
+using AuthServer.Api.Persistence;
+using AuthServer.Core.Abstractions;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +16,10 @@ builder.Services.AddSingleton(jwtSettings);
 
 // Register the token generator so the endpoint can use it.
 builder.Services.AddSingleton<AccessTokenGenerator>();
+
+builder.Services.AddDbContext<AuthDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("AuthDb")));
+builder.Services.AddScoped<IRefreshTokenStore, EfRefreshTokenStore>();
 
 var app = builder.Build();
 

@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: ztapi-postgres
+    environment:
+      POSTGRES_USER: ztapi
+      POSTGRES_PASSWORD: ztapi_dev_password
+      POSTGRES_DB: ztapi
+    ports:
+      - "5432:5432"
+    volumes:
+      - ztapi_pgdata:/var/lib/postgresql/data
+
+volumes:
+  ztapi_pgdata:
