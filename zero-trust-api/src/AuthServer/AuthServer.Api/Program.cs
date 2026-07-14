@@ -3,6 +3,7 @@ using SecureApi.Shared.Auth;
 using AuthServer.Api.Persistence;
 using AuthServer.Core.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using AuthServer.Core.RefreshRotation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,7 @@ builder.Services.AddSingleton(jwtSettings);
 
 // Register the token generator so the endpoint can use it.
 builder.Services.AddSingleton<AccessTokenGenerator>();
+builder.Services.AddScoped<RefreshTokenRotationService>();
 
 builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AuthDb")));
@@ -30,22 +32,51 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-// POST /token — exchange username/password for a signed JWT.
-app.MapPost("/token", (TokenRequest request, AccessTokenGenerator generator, JwtSettings settings) =>
+app.MapPost("/token", async (
+    TokenRequest request,
+    AccessTokenGenerator generator,
+    RefreshTokenRotationService rotation,
+    JwtSettings settings) =>
 {
-    // Week 1: credentials are hardcoded. Real user store comes in Week 2.
     if (request.Username != "iliass" || request.Password != "password123")
     {
         return Results.Unauthorized();
     }
 
-    var token = generator.GenerateToken(userId: "user-123", username: request.Username);
+    const string userId = "user-123";
+
+    var accessToken = generator.GenerateToken(userId: userId, username: request.Username);
+    var refreshToken = await rotation.CreateInitialTokenAsync(userId);
 
     return Results.Ok(new TokenResponse(
-        AccessToken: token,
-        ExpiresIn: settings.AccessTokenMinutes * 60)); // minutes → seconds
+        AccessToken: accessToken,
+        RefreshToken: refreshToken.Token,
+        ExpiresIn: settings.AccessTokenMinutes * 60));
 })
 .WithName("IssueToken");
+app.MapPost("/refresh", async (
+    RefreshRequest request,
+    RefreshTokenRotationService rotation,
+    AccessTokenGenerator generator,
+    JwtSettings settings) =>
+{
+    var result = await rotation.RotateAsync(request.RefreshToken);
+
+    if (!result.Succeeded)
+    {
+        return Results.Unauthorized();
+    }
+
+    var newRefresh = result.NewToken!;
+    var accessToken = generator.GenerateToken(
+        userId: newRefresh.UserId,
+        username: newRefresh.UserId);
+
+    return Results.Ok(new TokenResponse(
+        AccessToken: accessToken,
+        RefreshToken: newRefresh.Token,
+        ExpiresIn: settings.AccessTokenMinutes * 60));
+})
+.WithName("RefreshToken");
 
 app.Run();

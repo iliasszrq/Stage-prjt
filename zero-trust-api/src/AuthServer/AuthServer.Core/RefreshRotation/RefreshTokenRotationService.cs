@@ -40,6 +40,18 @@ public class RefreshTokenRotationService
         await _store.AddAsync(newToken);
         return RotationResult.Success(newToken);
     }
+    public async Task<RefreshToken> CreateInitialTokenAsync(string userId)
+    {
+        var token = new RefreshToken
+        {
+            Token = GenerateSecureToken(),
+            UserId = userId,
+            FamilyId = Guid.NewGuid().ToString(),
+            ExpiresAt = DateTime.UtcNow.AddDays(_refreshTokenDays)
+        };
+        await _store.AddAsync(token);
+        return token;
+    }
     private static string GenerateSecureToken()
     {
         var bytes = RandomNumberGenerator.GetBytes(32);
