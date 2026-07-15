@@ -52,6 +52,14 @@ public class RefreshTokenRotationService
         await _store.AddAsync(token);
         return token;
     }
+    public async Task<bool> RevokeAsync(string presentedToken)
+    {
+        var existing = await _store.FindAsync(presentedToken);
+        if(existing is null)
+            return false;
+        await _store.RevokeFamilyAsync(existing.FamilyId);
+        return true;
+    }
     private static string GenerateSecureToken()
     {
         var bytes = RandomNumberGenerator.GetBytes(32);

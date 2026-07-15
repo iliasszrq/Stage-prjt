@@ -79,4 +79,13 @@ app.MapPost("/refresh", async (
 })
 .WithName("RefreshToken");
 
+app.MapPost("/revoke", async(
+    RevokeRequest request,
+    RefreshTokenRotationService rotation) =>
+{
+    await rotation.RevokeAsync(request.RefreshToken);
+    return Results.Ok();
+})
+.WithName("RevokeToken");
+
 app.Run();
