@@ -4,28 +4,24 @@ using AuthServer.Api.Persistence;
 using AuthServer.Core.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using AuthServer.Core.RefreshRotation;
+using AuthServer.Api.Signing;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-// Bind the "Jwt" config section to a JwtSettings instance.
 var jwtSettings = builder.Configuration.GetSection("Jwt").Get<JwtSettings>()!;
 builder.Services.AddSingleton(jwtSettings);
 
-// Register the token generator so the endpoint can use it.
+
 builder.Services.AddSingleton<AccessTokenGenerator>();
 builder.Services.AddScoped<RefreshTokenRotationService>();
-
 builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AuthDb")));
 builder.Services.AddScoped<IRefreshTokenStore, EfRefreshTokenStore>();
+builder.Services.AddSingleton<RsaKeyProvider>();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -36,6 +32,7 @@ app.MapPost("/token", async (
     TokenRequest request,
     AccessTokenGenerator generator,
     RefreshTokenRotationService rotation,
+    RsaKeyProvider keys,
     JwtSettings settings) =>
 {
     if (request.Username != "iliass" || request.Password != "password123")
@@ -45,7 +42,7 @@ app.MapPost("/token", async (
 
     const string userId = "user-123";
 
-    var accessToken = generator.GenerateToken(userId: userId, username: request.Username);
+    var accessToken = generator.GenerateToken(userId, request.Username, keys.GetPrivateKey());
     var refreshToken = await rotation.CreateInitialTokenAsync(userId);
 
     return Results.Ok(new TokenResponse(
@@ -58,6 +55,7 @@ app.MapPost("/refresh", async (
     RefreshRequest request,
     RefreshTokenRotationService rotation,
     AccessTokenGenerator generator,
+    RsaKeyProvider keys,
     JwtSettings settings) =>
 {
     var result = await rotation.RotateAsync(request.RefreshToken);
@@ -69,8 +67,9 @@ app.MapPost("/refresh", async (
 
     var newRefresh = result.NewToken!;
     var accessToken = generator.GenerateToken(
-        userId: newRefresh.UserId,
-        username: newRefresh.UserId);
+        newRefresh.UserId,
+        newRefresh.UserId,
+        keys.GetPrivateKey());
 
     return Results.Ok(new TokenResponse(
         AccessToken: accessToken,
@@ -87,5 +86,14 @@ app.MapPost("/revoke", async(
     return Results.Ok();
 })
 .WithName("RevokeToken");
+app.MapGet("/.well-known/jwks.json", (RsaKeyProvider keys) =>
+{
+    var publicKey = keys.GetPublicKey();
+    var jwk = JsonWebKeyConverter.ConvertFromSecurityKey(publicKey);
+    jwk.Use = "sig";
+    jwk.Alg = SecurityAlgorithms.RsaSha256;
+    return Results.Ok(new { keys = new[] { jwk } });
+})
+.WithName("Jwks");
 
 app.Run();
