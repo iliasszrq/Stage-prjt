@@ -1,12 +1,31 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = "http://localhost:5001";
+    options.RequireHttpsMetadata = false;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = "http://localhost:5001",
+
+        ValidateAudience = true,
+        ValidAudience = "resource-api",
+        
+        ValidateIssuerSigningKey = true,
+        ValidateLifetime = true
+    };
+});
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
+app.UseAuthentication();
+app.UseAuthorization();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -32,8 +51,15 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
-
+app.MapGet("/whoami", (HttpContext ctx) =>
+{
+    var userId = ctx.User.FindFirst("sub")?.Value ?? "unknown";
+    var username = ctx.User.FindFirst("unique_name")?.Value ?? "unknown";
+    return Results.Ok(new { userId, username });
+})
+.RequireAuthorization();
 app.Run();
+
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {

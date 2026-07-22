@@ -7,6 +7,8 @@ using AuthServer.Core.RefreshRotation;
 using AuthServer.Api.Signing;
 using Microsoft.IdentityModel.Tokens;
 
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 
@@ -20,6 +22,7 @@ builder.Services.AddDbContext<AuthDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("AuthDb")));
 builder.Services.AddScoped<IRefreshTokenStore, EfRefreshTokenStore>();
 builder.Services.AddSingleton<RsaKeyProvider>();
+
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -95,5 +98,18 @@ app.MapGet("/.well-known/jwks.json", (RsaKeyProvider keys) =>
     return Results.Ok(new { keys = new[] { jwk } });
 })
 .WithName("Jwks");
+app.MapGet("/.well-known/openid-configuration", (JwtSettings settings) =>
+{
+    var issuer = settings.Issuer;
+    return Results.Ok(new
+    {
+        issuer = issuer,
+        jwks_uri = $"{issuer}/.well-known/jwks.json",
+        response_types_supported = new[] { "token" },
+        subject_types_supported = new[] { "public" },
+        id_token_signing_alg_values_supported = new[] { "RS256" }
+    });
+})
+.WithName("OpenIdConfiguration");
 
 app.Run();
