@@ -38,12 +38,17 @@ app.MapPost("/token", async (
     RsaKeyProvider keys,
     JwtSettings settings) =>
 {
-    if (request.Username != "iliass" || request.Password != "password123")
+    string? userId = (request.Username, request.Password) switch
+    {
+        ("alice", "password123") => "user-alice",
+        ("bob",   "password123") => "user-bob",
+        _ => null
+    };
+
+    if (userId is null)
     {
         return Results.Unauthorized();
     }
-
-    const string userId = "user-123";
 
     var accessToken = generator.GenerateToken(userId, request.Username, keys.GetPrivateKey());
     var refreshToken = await rotation.CreateInitialTokenAsync(userId);
